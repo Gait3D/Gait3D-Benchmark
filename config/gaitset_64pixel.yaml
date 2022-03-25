@@ -1,0 +1,80 @@
+data_cfg:
+  dataset_name: Gait3D-64pixel
+  dataset_root: Gait3D-sils-64-44-pkl
+  dataset_partition: ./misc/partitions/Gait3D.json
+  num_workers: 1
+  remove_no_gallery: false
+  test_dataset_name: Gait3D-64pixel
+
+evaluator_cfg:
+  enable_float16: false
+  restore_ckpt_strict: true
+  restore_hint: 180000
+  save_name: GaitSet
+  eval_func: evaluation_Gait3D
+  sampler:
+    batch_size: 16
+    sample_type: all_ordered
+    type: InferenceSampler
+  metric: cos # cos euc
+  transform:
+    - type: BaseSilTransform
+
+loss_cfg:
+  loss_term_weight: 1.0
+  margin: 0.2
+  type: TripletLoss
+  log_prefix: triplet
+
+model_cfg:
+  model: GaitSet
+  in_channels:
+    - 1
+    - 32
+    - 64
+    - 128
+  SeparateFCs:
+    in_channels: 128
+    out_channels: 256
+    parts_num: 62
+  bin_num:
+    - 16
+    - 8
+    - 4
+    - 2
+    - 1
+
+optimizer_cfg:
+  lr: 0.001
+  momentum: 0.9
+  solver: Adam
+  weight_decay: 0.0005
+
+scheduler_cfg:
+  gamma: 0.1
+  milestones:
+    - 30000
+    - 90000
+  scheduler: MultiStepLR
+
+trainer_cfg:
+  enable_float16: true
+  log_iter: 100
+  restore_ckpt_strict: true
+  restore_hint: 0
+  save_iter: 10000
+  save_name: GaitSet
+  sync_BN: false
+  total_iter: 180000
+  sampler:
+    batch_shuffle: false
+    batch_size:
+      - 32
+      - 4
+    frames_num_fixed: 30
+    frames_num_max: 50
+    frames_num_min: 25
+    sample_type: fixed_unordered
+    type: TripletSampler
+  transform:
+    - type: BaseSilTransform
