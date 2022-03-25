@@ -139,15 +139,15 @@ sh test.sh
 
 ## Citation
 Please cite this paper in your publications if it helps your research:
-```
+
+```BibTeX
 @inproceedings{zheng2022gait3d,
-title={Gait Recognition in the Wild with Dense 3D Representations and A Benchmark},
-author={Jinkai Zheng, Xinchen Liu, Wu Liu, Lingxiao He, Chenggang Yan, Tao Mei},
-booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-year={2022}
+  title={Gait Recognition in the Wild with Dense 3D Representations and A Benchmark},
+  author={Jinkai Zheng, Xinchen Liu, Wu Liu, Lingxiao He, Chenggang Yan, Tao Mei},
+  booktitle={IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year={2022}
 }
 ```
-
 
 ## Acknowledgement
 - [OpenGait](https://github.com/ShiqiYu/OpenGait)
