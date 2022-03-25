@@ -37,7 +37,7 @@ This is the code for the paper "Jinkai Zheng, Xinchen Liu, Wu Liu, Lingxiao He, 
 </thead>
 <tbody>
   <tr>
-    <td class="tg-c3ow">GREW (official split)</td>
+    <td class="tg-c3ow">GREW (<a href="https://github.com/Gait3D/Gait3D-Benchmark/blob/main/misc/partitions/GREW_office_split.json">official split</a>)</td>
     <td class="tg-c3ow" rowspan="2">Gait3D</td>
     <td class="tg-c3ow">15.80   </td>
     <td class="tg-c3ow">30.20   </td>
