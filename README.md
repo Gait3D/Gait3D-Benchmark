@@ -44,20 +44,20 @@ This is the code for the paper "Jinkai Zheng, Xinchen Liu, Wu Liu, Lingxiao He, 
     <td class="tg-c3ow">11.83   </td>
   </tr>
   <tr>
-    <td class="tg-c3ow">GREW (our split)</td>
+    <td class="tg-c3ow">GREW (<a href="https://github.com/Gait3D/Gait3D-Benchmark/blob/main/misc/partitions/GREW_our_split.json">our split</a>)</td>
     <td class="tg-c3ow">16.50   </td>
     <td class="tg-c3ow">31.10   </td>
     <td class="tg-c3ow">11.71   </td>
   </tr>
   <tr>
     <td class="tg-c3ow" rowspan="2">Gait3D</td>
-    <td class="tg-c3ow">GREW   (official split)</td>
+    <td class="tg-c3ow">GREW   (<a href="https://github.com/Gait3D/Gait3D-Benchmark/blob/main/misc/partitions/GREW_office_split.json">official split</a>)</td>
     <td class="tg-c3ow">18.81   </td>
     <td class="tg-c3ow">32.25   </td>
     <td class="tg-c3ow">~</td>
   </tr>
   <tr>
-    <td class="tg-c3ow">GREW (our split)</td>
+    <td class="tg-c3ow">GREW (<a href="https://github.com/Gait3D/Gait3D-Benchmark/blob/main/misc/partitions/GREW_our_split.json">our split</a>)</td>
     <td class="tg-c3ow">43.86   </td>
     <td class="tg-c3ow">60.89   </td>
     <td class="tg-c3ow">28.06   </td>
