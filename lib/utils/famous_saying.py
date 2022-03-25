@@ -1,0 +1,61 @@
+# -*- coding: utf-8 -*-
+"""
+   File Name：     famous_saying
+   Author :       jinkai Zheng
+   date：          2022/3/23
+   E-mail:        zhengjinkai3@qq.com
+"""
+
+
+FAMOUS_SAYINGS = [
+    'To be both a speaker of words and a doer of deeds.',
+    'Variety is the spice of life.',
+    'Bad times make a good man.',
+    'There is no royal road to learning.',
+    'Doubt is the key to knowledge.',
+    'The greatest test of courage on earth is to bear defeat without losing heart.',
+    'A man\'s best friends are his ten fingers.',
+    'Only they who fulfill their duties in everyday matters will fulfill them on great occasions.',
+    'The shortest way to do many things is to only one thing at a time.',
+    'Sow nothing, reap nothing.',
+    'Life is real, life is earnest.',
+    'Life would be too smooth if it had no rubs in it.',
+    'Life is the art of drawing sufficient conclusions form insufficient premises.',
+    'ife is fine and enjoyable, yet you must learn to enjoy your fine life.',
+    'Life is but a hard and tortuous journey.',
+    'Life is a horse, and either you ride it or it rides you.',
+    'Life is a great big canvas, and you should throw all the paint on it you can.',
+    'Life is like music. It must be composed by ear, feeling and instinct, not by rule.',
+    'Life is painting a picture, not doing a sum.',
+    'The wealth of the mind is the only wealth.',
+    'You can\'t judge a tree by its bark.',
+    'Sharp tools make good work.',
+    'Wasting time is robbing oneself.',
+    'Nurture passes nature.',
+    'There is no garden without its weeds.',
+    'A man is only as good as what he loves.',
+    'Wealth is the test of a man\'s character.',
+    'The best hearts are always the bravest.',
+    'One never lose anything by politeness.',
+    'There\'s only one corner of the universe you can be sure of improving, and that\'s your own self.',
+    'The world is like a mirror: Frown at itand it frowns at you; smile, and it smiles too.',
+    'Death comes to all, but great achievements raise a monument which shall endure until the sun grows old.',
+    'The reason why a great man is great is that he resolves to be a great man.',
+    'Suffering is the most powerful teacher of life.',
+    'A bosom friend afar brings a distant land near.',
+    'A common danger causes common action.',
+    'A contented mind is a continual / perpetual feast.',
+    'A fall into the pit, a gain in your wit.',
+    'A guest should suit the convenience of the host.',
+    'A letter from home is a priceless treasure.',
+    'All rivers run into the sea.',
+    'All time is no time when it is past.',
+    'An apple a day keeps the doctor away.',
+    'As heroes think, so thought Bruce.',
+    'A young idler, an old beggar.',
+    'Behind the mountains there are people to be found.',
+    'Bad luck often brings good luck.',
+    'Business is business.',
+    'Clumsy birds have to start flying early.',
+    'Do one thing at a time, and do well.',
+]
