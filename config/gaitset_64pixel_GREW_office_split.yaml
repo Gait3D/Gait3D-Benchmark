@@ -1,6 +1,6 @@
 data_cfg:
   dataset_name: GREW-office-64pixel
-  dataset_root: GREW-office-64-44-pkl
+  dataset_root: GREW-64-44-pkl
   dataset_partition: ./misc/partitions/GREW_office_split.json
   num_workers: 1
   remove_no_gallery: false
