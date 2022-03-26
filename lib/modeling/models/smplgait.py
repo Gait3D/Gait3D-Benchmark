@@ -36,13 +36,12 @@ class SMPLGait_64pixel(BaseModel):
         self.bn3 = nn.BatchNorm1d(256)
         self.dropout2 = nn.Dropout(p=0.2)
         self.dropout3 = nn.Dropout(p=0.2)
-        # self.relu = nn.ReLU()
 
     def forward(self, inputs):
         ipts, labs, _, _, seqL = inputs
 
         sils = ipts[0][0]    # [n, s, h, w]
-        smpls = ipts[1][0]   # [n, s, h, w]
+        smpls = ipts[1][0]   # [n, s, d]
 
         # extract SMPL features
         n, s, d = smpls.size()
@@ -50,8 +49,8 @@ class SMPLGait_64pixel(BaseModel):
         del smpls
 
         sps = F.relu(self.bn1(self.fc1(sps)))
-        sps = F.relu(self.bn2(self.dropout2(self.fc2(sps))))  # (B, 256) or (n, c)
-        sps = F.relu(self.bn3(self.dropout3(self.fc3(sps))))  # (B, 256) or (n, c)
+        sps = F.relu(self.bn2(self.dropout2(self.fc2(sps))))  # (B, 256)
+        sps = F.relu(self.bn3(self.dropout3(self.fc3(sps))))  # (B, 256)
         sps = sps.reshape(n*s, 16, 16)
         iden = Variable(torch.eye(16)).unsqueeze(0).repeat(n*s, 1, 1)   # [n*s, 16, 16]
         if sps.is_cuda:
@@ -126,13 +125,12 @@ class SMPLGait_128pixel(BaseModel):
         self.bn3 = nn.BatchNorm1d(1024)
         self.dropout2 = nn.Dropout(p=0.2)
         self.dropout3 = nn.Dropout(p=0.2)
-        # self.relu = nn.ReLU()
 
     def forward(self, inputs):
         ipts, labs, _, _, seqL = inputs
 
         sils = ipts[0][0]  # [n, s, h, w]
-        smpls = ipts[1][0]  # [n, s, d, np]
+        smpls = ipts[1][0]  # [n, s, d]
 
         # extract SMPL features
         n, s, d = smpls.size()
@@ -140,8 +138,8 @@ class SMPLGait_128pixel(BaseModel):
         del smpls
 
         sps = F.relu(self.bn1(self.fc1(sps)))
-        sps = F.relu(self.bn2(self.dropout2(self.fc2(sps))))  # (B, 256) or (n, c)
-        sps = F.relu(self.bn3(self.dropout3(self.fc3(sps))))  # (B, 1024) or (n, c)
+        sps = F.relu(self.bn2(self.dropout2(self.fc2(sps))))  # (B, 256)
+        sps = F.relu(self.bn3(self.dropout3(self.fc3(sps))))  # (B, 1024)
         sps = sps.reshape(n * s, 32, 32)
         iden = Variable(torch.eye(32)).unsqueeze(0).repeat(n * s, 1, 1)  # [n*s, 32, 32]
         if sps.is_cuda:

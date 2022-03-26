@@ -1,6 +1,6 @@
 data_cfg:
   dataset_name: GREW-our-64pixel
-  dataset_root: GREW-our-64-44-pkl
+  dataset_root: GREW-64-44-pkl/train
   dataset_partition: ./misc/partitions/GREW_our_split.json
   num_workers: 1
   remove_no_gallery: false

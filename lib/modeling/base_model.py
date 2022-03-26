@@ -212,9 +212,9 @@ class BaseModel(MetaModel, nn.Module):
             if data_cfg['dataset_root']['smpl_root'] is not None:
                 dataset = DataSet_SMPLGait(data_cfg, train)
         except:
-            if "GREW-office" in data_cfg['dataset_root']:
+            if "GREW-office" in data_cfg['dataset_name']:
                 dataset = DataSet_GREW_office(data_cfg, train)
-            elif "GREW-our" in data_cfg['dataset_root']:
+            elif "GREW-our" in data_cfg['dataset_name']:
                 dataset = DataSet_GREW_our(data_cfg, train)
             else:
                 dataset = DataSet(data_cfg, train)
