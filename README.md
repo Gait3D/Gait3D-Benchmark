@@ -1,5 +1,5 @@
 # Gait3D-Benchmark
-This is the code for the paper "Jinkai Zheng, Xinchen Liu, Wu Liu, Lingxiao He, Chenggang Yan, Tao Mei: [Gait Recognition in the Wild with Dense 3D Representations and A Benchmark](https://gait3d.github.io). (CVPR 2022)"
+This is the code for the paper "Jinkai Zheng, Xinchen Liu, Wu Liu, Lingxiao He, Chenggang Yan, Tao Mei: [Gait Recognition in the Wild with Dense 3D Representations and A Benchmark](https://gait3d.github.io). (CVPR 2022)". The official project page is [here](https://gait3d.github.io/).
 
 
 ## What's New
@@ -92,7 +92,7 @@ pip install tqdm pyyaml tensorboard opencv-python tqdm py7zr tabulate termcolor
 
 
 ## Data Preparation
-Download [Gait3D](https://gait3d.github.io/resources/AgreementForGait3D.pdf) dataset.
+Please download the **Gait3D dataset** by signing an [agreement](https://gait3d.github.io/resources/AgreementForGait3D.pdf). We ask for your information only to make sure the dataset is used for non-commercial purposes. We will not give it to any third party or publish it publicly anywhere.
 
 ### Data Pretreatment
 Run the following command to preprocess the Gait3D dataset.
