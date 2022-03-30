@@ -1,5 +1,5 @@
 # Gait3D-Benchmark
-This is the code for the paper "Jinkai Zheng, Xinchen Liu, Wu Liu, Lingxiao He, Chenggang Yan, Tao Mei: [Gait Recognition in the Wild with Dense 3D Representations and A Benchmark](https://gait3d.github.io). (CVPR 2022)"
+This is the code for the paper "Jinkai Zheng, Xinchen Liu, Wu Liu, Lingxiao He, Chenggang Yan, Tao Mei: [Gait Recognition in the Wild with Dense 3D Representations and A Benchmark](https://gait3d.github.io). (CVPR 2022)". The official project page is [here](https://gait3d.github.io/).
 
 
 ## What's New
@@ -92,7 +92,7 @@ pip install tqdm pyyaml tensorboard opencv-python tqdm py7zr tabulate termcolor
 
 
 ## Data Preparation
-Download [Gait3D](https://gait3d.github.io/resources/AgreementForGait3D.pdf) dataset.
+Please download the **Gait3D dataset** by signing an [agreement](https://gait3d.github.io/resources/AgreementForGait3D.pdf). We ask for your information only to make sure the dataset is used for non-commercial purposes. We will not give it to any third party or publish it publicly anywhere.
 
 ### Data Pretreatment
 Run the following command to preprocess the Gait3D dataset.
@@ -150,4 +150,10 @@ Please cite this paper in your publications if it helps your research:
 ```
 
 ## Acknowledgement
-- [OpenGait](https://github.com/ShiqiYu/OpenGait)
+Here are some great resources we benefit:
+
+- The codebase is based on [OpenGait](https://github.com/ShiqiYu/OpenGait).
+- The 3D SMPL data is obtained by [ROMP](https://github.com/Arthur151/ROMP).
+- The 2D Silhouette data is obtained by [HRNet-segmentation](https://github.com/HRNet/HRNet-Semantic-Segmentation).
+- The 2D pose data is obtained by [HRNet](https://github.com/HRNet/HRNet-Human-Pose-Estimation).
+- The ReID featrue used to make Gait3D is obtained by [FastReID](https://github.com/JDAI-CV/fast-reid).
