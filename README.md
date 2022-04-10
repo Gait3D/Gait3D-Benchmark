@@ -1,5 +1,5 @@
 # Gait3D-Benchmark
-This is the code for the paper "Jinkai Zheng, Xinchen Liu, Wu Liu, Lingxiao He, Chenggang Yan, Tao Mei: [Gait Recognition in the Wild with Dense 3D Representations and A Benchmark](https://gait3d.github.io). (CVPR 2022)". The official project page is [here](https://gait3d.github.io/).
+This is the code for the paper "Jinkai Zheng, Xinchen Liu, Wu Liu, Lingxiao He, Chenggang Yan, Tao Mei: [Gait Recognition in the Wild with Dense 3D Representations and A Benchmark](https://arxiv.org/abs/2204.02569). (CVPR 2022)". The official project page is [here](https://gait3d.github.io/).
 
 
 ## What's New
