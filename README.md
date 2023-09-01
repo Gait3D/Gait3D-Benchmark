@@ -8,7 +8,6 @@ Thanks to all of our co-authors for their help, as well as the great repository 
 | Gait Recognition in the Wild with Dense 3D Representations and A Benchmark (CVPR 2022) | Gait Recognition in the Wild with Multi-hop Temporal Switch (ACM MM 2022) | Parsing is All You Need for Accurate Gait Recognition in the Wild (ACM MM 2023) |
 | **[[Project Page]](https://gait3d.github.io) [[Paper]](https://arxiv.org/abs/2204.02569)** | **[[Paper]](https://arxiv.org/abs/2209.00355)** |  **[[Project Page]](https://gait3d.github.io/gait3d-parsing-hp/) [[Paper]](https://arxiv.org/abs/2308.16739)** |
 
-
 ## What's New
  - [Sept 2023] The code and model of CDGNet-Parsing will be released at [here](https://github.com/Gait3D/CDGNet-Parsing), you can use it to extract parsing data on your own data.
  - [Sept 2023] Our [Gait3D-Parsing](https://gait3d.github.io/gait3d-parsing-hp/) dataset and [ParsingGait](https://gait3d.github.io/gait3d-parsing-hp/) method are released.
