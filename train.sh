@@ -1,35 +1,57 @@
-# # ---------------------Pixel is [64, 44]--------------------- # #
-# # GaitSet
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 lib/main.py --cfgs ./config/gaitset_64pixel.yaml --phase train
-# # GaitPart
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 lib/main.py --cfgs ./config/gaitpart_64pixel.yaml --phase train
-# # GLN
-# Phase 1
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 lib/main.py --cfgs ./config/gln/gln_phase1_64pixel.yaml --phase train
-# Phase 2
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 lib/main.py --cfgs ./config/gln/gln_phase2_64pixel.yaml --phase train
-# # GaitGL
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 lib/main.py --cfgs ./config/gaitgl_64pixel.yaml --phase train
+# # **************** For Gait3D ****************
 # # Baseline
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 lib/main.py --cfgs ./config/baseline_64pixel.yaml --phase train
-# # SMPLGait
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 lib/main.py --cfgs ./config/smplgait_64pixel.yaml --phase train
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 opengait/main.py --cfgs ./configs/baseline/baseline_gait3d.yaml --phase train
 
+# # GaitBase
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 opengait/main.py --cfgs ./configs/gaitbase/gaitbase_gait3d_btz32x2_fixed.yaml --phase train
 
-# # ---------------------Pixel is [128, 88]--------------------- # #
 # # GaitSet
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 lib/main.py --cfgs ./config/gaitset_128pixel.yaml --phase train
-# # GaitPart
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 lib/main.py --cfgs ./config/gaitpart_128pixel.yaml --phase train
-# # GLN
-# Phase 1
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 lib/main.py --cfgs ./config/gln/gln_phase1_128pixel.yaml --phase train
-# Phase 2
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 lib/main.py --cfgs ./config/gln/gln_phase2_128pixel.yaml --phase train
-# # GaitGL
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 lib/main.py --cfgs ./config/gaitgl_128pixel.yaml --phase train
-# # Baseline
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 lib/main.py --cfgs ./config/baseline_128pixel.yaml --phase train
-# # SMPLGait
-CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 lib/main.py --cfgs ./config/smplgait_128pixel.yaml --phase train
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 opengait/main.py --cfgs ./configs/gaitset/gaitset_gait3d.yaml --phase train
 
+# # GaitPart
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 opengait/main.py --cfgs ./configs/gaitpart/gaitpart_gait3d.yaml --phase train
+
+# GaitGL
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --master_port 12345 --nproc_per_node=4 opengait/main.py --cfgs ./configs/gaitgl/gaitgl_gait3d.yaml --phase train
+
+# # GLN 
+# # Phase 1
+CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --master_port 12345  --nproc_per_node=2 opengait/main.py --cfgs ./configs/gln/gln_phase1_gait3d.yaml --phase train
+# # Phase 2
+CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 opengait/main.py --cfgs ./configs/gln/gln_phase2_gait3d.yaml --phase train
+
+# SMPLGait
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --master_port 12345 --nproc_per_node=4 opengait/main.py --cfgs ./configs/smplgait/smplgait_gait3d.yaml --phase train
+
+# MTSGait
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --master_port 12345 --nproc_per_node=4 opengait/main.py --cfgs ./configs/mtsgait/mtsgait_gait3d.yaml --phase train
+
+
+
+# # **************** For Gait3D-Parsing ****************
+# # GaitBase
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 opengait/main.py --cfgs ./configs/gaitbase/gaitbase_gait3d_parsing_btz32x2_fixed.yaml --phase train
+
+# # GaitSet
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 opengait/main.py --cfgs ./configs/gaitset/gaitset_gait3d_parsing.yaml --phase train
+
+# # GaitPart
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --nproc_per_node=4 opengait/main.py --cfgs ./configs/gaitpart/gaitpart_gait3d_parsing.yaml --phase train
+
+# GaitGL
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --master_port 12345 --nproc_per_node=4 opengait/main.py --cfgs ./configs/gaitgl/gaitgl_gait3d_parsing.yaml --phase train
+
+# # GLN 
+# # Phase 1
+CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --master_port 12345  --nproc_per_node=2 opengait/main.py --cfgs ./configs/gln/gln_phase1_gait3d_parsing.yaml --phase train
+# # Phase 2
+CUDA_VISIBLE_DEVICES=0,1 python -m torch.distributed.launch --nproc_per_node=2 opengait/main.py --cfgs ./configs/gln/gln_phase2_gait3d_parsing.yaml --phase train
+
+# SMPLGait
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --master_port 12345 --nproc_per_node=4 opengait/main.py --cfgs ./configs/smplgait/smplgait_gait3d_parsing.yaml --phase train
+
+# MTSGait
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --master_port 12345 --nproc_per_node=4 opengait/main.py --cfgs ./configs/mtsgait/mtsgait_gait3d_parsing.yaml --phase train
+
+# ParsingGait
+CUDA_VISIBLE_DEVICES=0,1,2,3 python -m torch.distributed.launch --master_port 12345 --nproc_per_node=4 opengait/main.py --cfgs ./configs/parsinggait/parsinggait_gait3d_parsing.yaml --phase train
