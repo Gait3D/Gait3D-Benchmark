@@ -1,5 +1,5 @@
 # Gait3D-Benchmark
-This repository contains the code and model for our CVPR 2022, ACM MM 2022, and ACM MM 2023 paper. 
+This repository contains the code and model for our CVPR 2022, ACM MM 2022, and ACM MM 2023 papers. 
 The Gait3D-Benchmark project is now maintained By [Jinkai Zheng](http://jinkaizheng.com/) and [Xinchen Liu](http://xinchenliu.com/).
 Thanks to all of our co-authors for their help, as well as the great repository that we list in the Acknowledgement.
 
@@ -9,7 +9,7 @@ Thanks to all of our co-authors for their help, as well as the great repository 
 | **[[Project Page]](https://gait3d.github.io) [[Paper]](https://arxiv.org/abs/2204.02569)** | **[[Paper]](https://arxiv.org/abs/2209.00355)** |  **[[Project Page]](https://gait3d.github.io/gait3d-parsing-hp/) [[Paper]](https://arxiv.org/abs/2308.16739)** |
 
 ## What's New
- - [Sept 2023] The code and model of CDGNet-Parsing will be released at [here](https://github.com/Gait3D/CDGNet-Parsing), you can use it to extract parsing data on your own data.
+ - [Sept 2023] The code and model of CDGNet-Parsing are released [here](https://github.com/Gait3D/CDGNet-Parsing), you can use it to extract parsing data on your own data.
  - [Sept 2023] Our [Gait3D-Parsing](https://gait3d.github.io/gait3d-parsing-hp/) dataset and [ParsingGait](https://gait3d.github.io/gait3d-parsing-hp/) method are released.
   - [Sept 2022] Our [MTSGait](https://arxiv.org/abs/2209.00355) method is released.
  - [Mar 2022] Our [Gait3D](https://gait3d.github.io) dataset and [SMPLGait](https://gait3d.github.io) method are released.
@@ -69,7 +69,7 @@ Please cite this paper in your publications if it helps your research:
 ```
 
 ## Acknowledgement
-Here are some great resources we benefit:
+Here are some great resources we benefit from:
 
 - The codebase is based on [OpenGait](https://github.com/ShiqiYu/OpenGait).
 - The 3D SMPL data is obtained by [ROMP](https://github.com/Arthur151/ROMP).
