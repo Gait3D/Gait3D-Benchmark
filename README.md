@@ -9,6 +9,7 @@ Thanks to all of our co-authors for their help, as well as the great repository 
 | **[[Project Page]](https://gait3d.github.io) [[Paper]](https://arxiv.org/abs/2204.02569)** | **[[Paper]](https://arxiv.org/abs/2209.00355)** |  **[[Project Page]](https://gait3d.github.io/gait3d-parsing-hp/) [[Paper]](https://arxiv.org/abs/2308.16739)** |
 
 ## What's New
+ - [July 2024] The ACM MM'24 [Multimodal Gait Recognition (MGR) Challenge](https://hcma2024.github.io/mgr) is organized. You can get started quickly [here](https://github.com/Gait3D/Gait3D-Benchmark/tree/main/datasets/MGR).
  - [Sept 2023] The code and model of CDGNet-Parsing are released [here](https://github.com/Gait3D/CDGNet-Parsing), you can use it to extract parsing data on your own data.
  - [Sept 2023] Our [Gait3D-Parsing](https://gait3d.github.io/gait3d-parsing-hp/) dataset and [ParsingGait](https://gait3d.github.io/gait3d-parsing-hp/) method are released.
   - [Sept 2022] Our [MTSGait](https://arxiv.org/abs/2209.00355) method is released.
