@@ -233,6 +233,40 @@ def HID_submission(data, dataset, rerank=True, metric='euc'):
     return
 
 
+def MGR_submission(data, dataset, rerank=False, metric='euc'):
+    msg_mgr = get_msg_mgr()
+    msg_mgr.log_info("Evaluating MGR")
+    feature, label, seq_type = data['embeddings'], data['labels'], data['views']
+    label = np.array(label)
+    seq_type = np.array(seq_type)
+    probe_mask = (label == "probe")
+    gallery_mask = (label != "probe")
+    gallery_x = feature[gallery_mask, :]
+    gallery_y = label[gallery_mask]
+    probe_x = feature[probe_mask, :]
+    probe_y = seq_type[probe_mask]
+    if rerank:
+        feat = np.concatenate([probe_x, gallery_x])
+        dist = cuda_dist(feat, feat, metric).cpu().numpy()
+        msg_mgr.log_info("Starting Re-ranking")
+        re_rank = re_ranking(
+            dist, probe_x.shape[0], k1=6, k2=6, lambda_value=0.3)
+        idx = np.argsort(re_rank, axis=1)
+    else:
+        dist = cuda_dist(probe_x, gallery_x, metric)
+        idx = dist.cpu().sort(1)[1].numpy()
+
+    save_path = os.path.join(
+        "MGR_result/"+strftime('%Y-%m%d-%H%M%S', localtime())+".csv")
+    mkdir("MGR_result")
+    with open(save_path, "w") as f:
+        f.write("videoID,label\n")
+        for i in range(len(idx)):
+            f.write("{},{}\n".format(probe_y[i], gallery_y[idx[i, 0]]))
+        print("The result is saved to {}/{}".format(os.getcwd(), save_path))
+    return
+
+
 def evaluate_segmentation(data, dataset):
     labels = data['mask']
     pred = data['pred']
