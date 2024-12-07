@@ -23,9 +23,9 @@ class XGait(BaseModel):
         self.gcm = CALayers(**model_cfg['CALayers'])
         
         # Part Cross-granularity Alignment Module
-        self.pcm_up = CALayersP(**model_cfg['CALayers_local'], choosed_part='up')
-        self.pcm_middle = CALayersP(**model_cfg['CALayers_local'], choosed_part='middle')
-        self.pcm_down = CALayersP(**model_cfg['CALayers_local'], choosed_part='down')
+        self.pcm_up = CALayersP(**model_cfg['CALayersP'], choosed_part='up')
+        self.pcm_middle = CALayersP(**model_cfg['CALayersP'], choosed_part='middle')
+        self.pcm_down = CALayersP(**model_cfg['CALayersP'], choosed_part='down')
         
         # FCs
         self.FCs_sil = SeparateFCs(**model_cfg['SeparateFCs'])
