@@ -198,6 +198,114 @@ class BasicConv2dMTSRES(nn.Module):
         return out
 
 
+class CALayers(nn.Module):
+    def __init__(self, channels, reduction=16):
+        super(CALayers, self).__init__()
+        self.avg_pool = nn.AdaptiveAvgPool2d(1)
+        self.fc = nn.Sequential(
+            nn.Linear(channels * 2, channels // reduction, bias=False),
+            nn.ReLU(inplace=True),
+            nn.Linear(channels // reduction, channels * 2, bias=False),
+            nn.Sigmoid()
+        )
+
+    def forward(self, x, y):
+        """
+            x: [n, c, s, h, w]
+            y: [n, c, s, h, w]
+        """
+        n, c, s, h, w = x.size()
+        x_ = x.transpose(1, 2).reshape(-1, c, h, w)   # [n*s, c, h, w]
+        y_ = y.transpose(1, 2).reshape(-1, c, h, w)   # [n*s, c, h, w]
+        x_ = self.avg_pool(x_).view(n*s, c)
+        y_ = self.avg_pool(y_).view(n*s, c)
+        z = torch.cat([x_, y_], dim=1)     # [n*s, 2*c]
+        z = self.fc(z).view(n, s, 2*c, 1, 1).transpose(1, 2)  # [n, 2*c, s, 1, 1]
+        return x * z[:,:c,:,:,:].expand_as(x) + y * z[:,c:,:,:,:].expand_as(y)
+
+
+def PartPooling(x, with_max_pool=True):
+    """
+        Part Pooling for GCN
+        x   : [n*s, c, h, w]
+        ret : [n*s, c] 
+    """
+    n_s, c, h, w = x.size()
+    z = x.view(n_s, c, -1)  # [n, p, c, h*w]
+    if with_max_pool:
+        z = z.mean(-1) + z.max(-1)[0]   # [n*s, c]
+    else:
+        z = z.mean(-1)   # [n*s, c]
+    return z
+
+
+class CALayersP(nn.Module):
+    def __init__(self, channels, reduction=16, with_max_pool=True, choosed_part=''):
+        super(CALayersP, self).__init__()
+        self.choosed_part = choosed_part
+        self.with_max_pool = with_max_pool
+        self.avg_pool = nn.AdaptiveAvgPool2d(1)
+        self.max_pool = nn.AdaptiveMaxPool2d(1)
+        self.gammas = torch.nn.Parameter(torch.ones(1) * 0.75)
+        self.fc = nn.Sequential(
+            nn.Linear(channels * 2, channels // reduction, bias=False),
+            nn.ReLU(inplace=True),
+            nn.Linear(channels // reduction, channels * 2, bias=False),
+            nn.Sigmoid()
+        )
+
+    def learnable_division(self, z, mask_resize, choosed_part=''):
+        """
+            z: [n*s, c, h, w]
+            mask_resize: [n*s, h, w]
+            return [n*s, c, h, w]
+            ***Coarse Parts:
+            up:     [1]  Head
+            middle: [2, 3, 4, 5, 6, 11]  Torso, Left-arm, Left-hand, Right-arm, Right-hand, Dress
+            down:   [7, 8, 9, 10, 11]    Left-leg, Left-foot, Right-leg, Right-foot, Dress
+        """
+        split_parts = {
+            'up': [1],
+            'middle': [2, 3, 4, 5, 6, 11],
+            'down': [7, 8, 9, 10, 11],
+        }
+        choosed_part_list = split_parts[choosed_part]
+        choosed_part_mask = mask_resize.long() == -1
+        for part_i in choosed_part_list:
+            choosed_part_mask += (mask_resize.long() == part_i)
+
+        mask = choosed_part_mask.unsqueeze(1)
+        z_feat = mask.float() * z * self.gammas + (~mask).float() * z * (1.0 - self.gammas)   # [n*s, c, h, w]
+
+        return z_feat
+    
+    def forward(self, x, y, mask_resize):
+        """
+            x: [n, c, s, h, w]
+            y: [n, c, s, h, w]
+        """
+        n, c, s, h, w = x.size()
+        h_split = h // 4
+        x_ = x.transpose(1, 2).reshape(-1, c, h, w)   # [n*s, c, h, w]
+        y_ = y.transpose(1, 2).reshape(-1, c, h, w)   # [n*s, c, h, w]
+
+        x_ = x_[:, :, :h_split, :]   # [n*s, c, h/4, w]
+        x_ = self.avg_pool(x_).view(n*s, c) + self.max_pool(x_).view(n*s, c)
+
+        y_ = self.learnable_division(y_, mask_resize, self.choosed_part)  # [n*s, c, h, w]
+        y_ = PartPooling(y_, with_max_pool=self.with_max_pool)   # [n*s, c]
+        
+        z = torch.cat([x_, y_], dim=1)     # [n*s, 2*c]
+        z = self.fc(z).view(n, s, 2*c, 1, 1).transpose(1, 2)  # [n, 2*c, s, 1, 1]
+        
+        if self.choosed_part == 'up':
+            return x[:,:,:,:h_split,:] * z[:,:c,:,:,:] + y[:,:,:,:h_split,:] * z[:,c:,:,:,:]
+        elif self.choosed_part == 'middle':
+            return x[:,:,:,h_split:3*h_split,:] * z[:,:c,:,:,:] + y[:,:,:,h_split:3*h_split,:] * z[:,c:,:,:,:]
+        elif self.choosed_part == 'down':
+            return x[:,:,:,-h_split:,:] * z[:,:c,:,:,:] + y[:,:,:,-h_split:,:] * z[:,c:,:,:,:]
+
+
 class SeparateFCs(nn.Module):
     def __init__(self, parts_num, in_channels, out_channels, norm=False):
         super(SeparateFCs, self).__init__()

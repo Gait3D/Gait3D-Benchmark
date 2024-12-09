@@ -25,6 +25,7 @@
 | [OpenGait Baseline*](https://github.com/ShiqiYu/OpenGait) | 47.70(42.90) | 67.20(63.90) | 37.62(35.19) | 22.24(20.83) | [model-128](https://github.com/Gait3D/Gait3D-Benchmark/releases/download/v0.1/128pixel-Baseline-180000.pt)([model-64](https://github.com/Gait3D/Gait3D-Benchmark/releases/download/v0.1/64pixel-Baseline-180000.pt)) |
 | [SMPLGait(CVPR2022)](https://gait3d.github.io) | 53.20(46.30) | 71.00(64.50) | 42.43(37.16) | 25.97(22.23) | [model-128](https://github.com/Gait3D/Gait3D-Benchmark/releases/download/v0.1/128pixel-SMPLGait_128pixel-180000.pt)([model-64](https://github.com/Gait3D/Gait3D-Benchmark/releases/download/v0.1/64pixel-SMPLGait_64pixel-180000.pt)) |
 | [MTSGait(ACMMM2023)](https://arxiv.org/abs/2209.00355) | --(48.70) | --(67.10) | --(37.63) | --(21.92) | [model-64](https://github.com/Gait3D/Gait3D-Benchmark/releases/download/v1.0/Gait3D-MTSGait-180000.pt) |
+| [XGait(ACMMM2024)](https://arxiv.org/abs/2411.10742) | --(80.50) | --(91.90) | --(73.30) | --(55.40) | [model-64](https://github.com/Gait3D/Gait3D-Benchmark/releases/download/v1.0/Gait3D-XGait-120000.pt) |
 
 *It should be noticed that OpenGait Baseline is equal to SMPLGait w/o 3D in our paper.
 
