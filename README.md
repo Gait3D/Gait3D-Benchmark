@@ -68,6 +68,13 @@ Please cite this paper in your publications if it helps your research:
   booktitle={ACM International Conference on Multimedia (ACM MM)},
   year={2023}
 }
+
+@inproceedings{zheng2024xgait,
+  title={It Takes Two: Accurate Gait Recognition in the Wild via Cross-granularity Alignment},
+  author={Jinkai Zheng, Xinchen Liu, Boyue Zhang, Chenggang Yan, Jiyong Zhang, Wu Liu, Yongdong Zhang},
+  booktitle={ACM International Conference on Multimedia (ACM MM)},
+  year={2024}
+}
 ```
 
 ## Acknowledgement
