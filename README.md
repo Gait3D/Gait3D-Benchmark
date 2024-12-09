@@ -45,7 +45,7 @@ sh test.sh
 ```
 
 ## Citation
-Please cite this paper in your publications if it helps your research:
+Please cite these papers in your publications if it helps your research:
 
 ```BibTeX
 @inproceedings{zheng2022gait3d,
